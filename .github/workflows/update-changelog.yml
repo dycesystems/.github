@@ -74,7 +74,6 @@ jobs:
           echo "date=$(echo $FORMATED_DATE)" >> $GITHUB_OUTPUT;
 
       - name: Update Changelog
-        if: ${{ inputs.notes != '' }}
         uses: stefanzweifel/changelog-updater-action@v1
         with:
           # Pass extracted release date, release notes and version to the Action.
@@ -85,7 +84,6 @@ jobs:
           parse-github-usernames: true
 
       - name: Commit updated CHANGELOG
-        if: ${{ inputs.notes != '' }}
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           # Push updated CHANGELOG to release target branch.
